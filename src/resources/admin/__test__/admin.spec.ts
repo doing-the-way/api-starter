@@ -1,4 +1,4 @@
-import admin from './admin.router'
+import admin from '../admin.router'
 
 describe('item router', () => {
   test('has crud routes', () => {

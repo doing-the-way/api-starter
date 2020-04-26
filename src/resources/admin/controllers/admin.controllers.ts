@@ -1,8 +1,9 @@
 
-export const me = (req, res) => {
+const admin = (req, res) => {
   res.status(200).json({ 
     message: "Admin router",
     payload:req.payload
   })
-  // console.log('admin status: ', res.statusCode)
 }
+
+export { admin }

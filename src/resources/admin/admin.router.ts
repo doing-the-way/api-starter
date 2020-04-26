@@ -1,12 +1,10 @@
 import { Router } from 'express'
-import { me } from './admin.controllers'
+import * as controller from './controllers/'
 
 const admin = Router()
 
-
-
 admin
   .route('/')
-  .get(me)
+  .get(controller.admin)
 
 export default admin

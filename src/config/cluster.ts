@@ -26,7 +26,9 @@ const payload =  ( req, res, next ) => {
       res.redirect('/')
       process.exit()
     }
-    console.log(`serving from ${process.pid}`)
+    if(process.env.NODE_ENV!== 'testing'){
+      console.log(`serving from ${process.pid}`)
+    }
     
   req.payload = payload
   next()
