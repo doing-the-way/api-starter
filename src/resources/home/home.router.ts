@@ -7,7 +7,6 @@ home.on('mount', function (parent) {
   console.log('Home Mounted', home.mountpath)
 })
 
-
 home
   .route('/')
   .get(me)

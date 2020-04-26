@@ -5,7 +5,6 @@ const admin = express()
 
 admin.on('mount', function (parent) {
   console.log('Admin Mounted', admin.mountpath)
-  // console.log(parent.response) // refers to the parent app
 })
 
 admin

@@ -14,11 +14,12 @@
   "watch": [
     "src/**/*.js",
     "src/**/*.ts",
+    "src/**/*.env",
     "src/**/*.graphql",
     "src/**/*.gql"
   ],
   "env": {
     "NODE_ENV": "development"
   },
-  "ext": "ts,js,json,graphql"
+  "ext": "ts,env,js,json,graphql"
 }

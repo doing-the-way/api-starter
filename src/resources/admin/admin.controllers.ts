@@ -4,4 +4,5 @@ export const me = (req, res) => {
     message: "Admin router",
     payload:req.payload
   })
+  // console.log('admin status: ', res.statusCode)
 }
