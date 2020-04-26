@@ -1,14 +1,14 @@
 import express, { Router } from 'express'
-import { me } from './home.controllers'
+import * as controller  from './controllers'
 
 const home = express()
 
-home.on('mount', function (parent) {
+home.on('mount',  parent => {
   console.log('Home Mounted', home.mountpath)
 })
 
 home
   .route('/')
-  .get(me)
+  .get(controller.home)
 
 export default home

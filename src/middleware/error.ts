@@ -2,7 +2,7 @@ import color from 'chalk'
 // trace: err.stack.match(/\/([\/\w-_\.]+\.js):(\d*):(\d*)/),
 const errorHandler = (err, req, res, next) => {
   const errorMsg = {
-    SUCCESS: 'Error',
+    SUCCESS: false,
     STATUSCODE: err.statusCode,
     MESSAGE: err.msg,
     DETAILS: err.details,
