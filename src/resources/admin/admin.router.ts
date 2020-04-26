@@ -1,11 +1,9 @@
-import express, { Router } from 'express'
+import { Router } from 'express'
 import { me } from './admin.controllers'
 
-const admin = express()
+const admin = Router()
 
-admin.on('mount', function (parent) {
-  console.log('Admin Mounted', admin.mountpath)
-})
+
 
 admin
   .route('/')

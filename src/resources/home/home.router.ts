@@ -1,11 +1,11 @@
 import express, { Router } from 'express'
 import * as controller  from './controllers'
 
-const home = express()
+const home = Router()
 
-home.on('mount',  parent => {
-  console.log('Home Mounted', home.mountpath)
-})
+// home.on('mount',  parent => {
+//   console.log('Home Mounted', home.mountpath)
+// })
 
 home
   .route('/')

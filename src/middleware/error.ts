@@ -30,18 +30,20 @@ const errorHandler = (err, req, res, next) => {
     return value
   }
 
-  console.log(`
-  ${color.cyan('ERROR MESSAGE')} 
-  
-  ${color.yellow('SUCCESS')}    : ${color.red(errorMsg.SUCCESS)}
-  ${color.yellow('SATUS CODE')} : ${statusColor(errorMsg.STATUSCODE)}
-  ${color.yellow('MESSAGE')}    : ${color.cyan(errorMsg.MESSAGE)}
-  ${color.yellow('DETAILS')}    : ${color.cyan(errorMsg.DETAILS)}
-  ${color.yellow('FILENAME')}   : ${color.cyan(errorMsg.FILENAME)}
-  ${color.yellow('PATH')}       : ${color.green(errorMsg.PATH)}
-  ${color.yellow('LINE')}       : ${color.magenta(errorMsg.LINE)}
-  `
-  )
+  if(process.env.NODE_ENV !== 'testing'){
+    console.log(`
+    ${color.cyan('ERROR MESSAGE')} 
+    
+    ${color.yellow('SUCCESS')}    : ${color.red(errorMsg.SUCCESS)}
+    ${color.yellow('SATUS CODE')} : ${statusColor(errorMsg.STATUSCODE)}
+    ${color.yellow('MESSAGE')}    : ${color.cyan(errorMsg.MESSAGE)}
+    ${color.yellow('DETAILS')}    : ${color.cyan(errorMsg.DETAILS)}
+    ${color.yellow('FILENAME')}   : ${color.cyan(errorMsg.FILENAME)}
+    ${color.yellow('PATH')}       : ${color.green(errorMsg.PATH)}
+    ${color.yellow('LINE')}       : ${color.magenta(errorMsg.LINE)}
+    `
+    )
+  }
   res.status(500).json(errorMsg)
   next()
 }

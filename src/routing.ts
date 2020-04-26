@@ -5,9 +5,9 @@ import error from './resources/error/error.router'
 
 const router = express()
 
-router.on('mount', parent => {
-  console.log(' ---- Mount ----- ', router.mountpath);
-})
+// router.on('mount', parent => {
+//   console.log(' ---- Mount ----- ', router.mountpath);
+// })
 
 router.use('/admin', admin)
 router.use('/home', home)
