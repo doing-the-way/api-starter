@@ -7,7 +7,6 @@ import { json, urlencoded } from 'body-parser'
 import cluster from 'cluster'
 import os from 'os'
 
-
 import connectDB from './config/db'
 import { payload } from './config/cluster'
 import logger from './middleware/logger'
@@ -36,6 +35,12 @@ app.use(logger)
 /** Routes */
 
 app.use('/',  routing)
+app.use('*', (req, res, next) => {
+  res.json({
+    message:'Ruta no disponible',
+    path:req.originalUrl
+  })
+})
 
 
 /** Error */

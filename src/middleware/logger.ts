@@ -20,7 +20,7 @@ const logger = (req, res, next) => {
     return http;
   }
   if(process.env.NODE_ENV !== 'testing'){
-    console.log(`${colorMethod(req.method)} ${req.protocol}://${req.get('host')}${req.originalUrl}`)
+    console.log(`${colorMethod(req.method)} ${res.statusCode} ${req.protocol}://${req.get('host')}${req.originalUrl}`)
   }
   next()
 }
