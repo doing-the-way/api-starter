@@ -4,9 +4,12 @@ import http from 'http'
 import consola from 'signale'
 import cors from 'cors'
 import { json, urlencoded } from 'body-parser'
+import cluster from 'cluster'
+import os from 'os'
 
-import config from './config'
+
 import connectDB from './config/db'
+import { payload } from './config/cluster'
 import logger from './middleware/logger'
 import errorHandler from './middleware/error'
 import routing from './routing'
@@ -16,11 +19,18 @@ dotenv.config()
 const app = express()
 const httpServer = http.createServer(app)
 const PORT = process.env.PORT 
+let numberCPUs;
+numberCPUs = 1
+
+if(process.env.NODE_ENV === 'production'){
+  numberCPUs = os.cpus().length
+}
 
 app.disable('x-powered-by')
 app.use(cors())
 app.use(json())
 app.use(urlencoded({ extended: true }))
+app.use(payload)
 app.use(logger)
 
 /** Routes */
@@ -35,12 +45,27 @@ let server:any;
 
 const start = async () => {
   try {
-    await connectDB();
-    server = httpServer.listen(PORT, () => {
-      consola.success(`API running in ${process.env.NODE_ENV} mode on http://localhost:${PORT}`);
-    })
+    console.log('Cluster Master is: ', !!cluster.isMaster)
+    if(cluster.isMaster){
+      console.log('this is the master process ', process.pid)
+      for(let i = 0; i < numberCPUs; i++){
+        cluster.fork(); // clonando cluster
+      }
+      cluster.on('exit', worker => {
+        console.log(`worker process ${process.pid} had died.`)
+        console.log(`only ${Object.keys(cluster.workers).length} remainging`)
+        console.log('starting new worker')
+        cluster.fork()
+      })
+    }else{
+      console.log('this the workers process ', process.pid)
+      await connectDB();
+      await httpServer.listen(PORT, () => {
+        consola.success(`API on http://localhost:8080 process pip: ${process.pid}`)
+      })
+    }
   } catch (e) {
-    consola.error(e);
+    consola.success('Error server')
   }
 }
 
