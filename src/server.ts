@@ -66,7 +66,7 @@ const start = async () => {
       console.log('this the workers process ', process.pid)
       await connectDB();
       await httpServer.listen(PORT, () => {
-        consola.success(`API on http://localhost:8080 process pip: ${process.pid}`)
+        consola.success(`API on http://localhost:${PORT} process pip: ${process.pid}`)
       })
     }
   } catch (e) {
