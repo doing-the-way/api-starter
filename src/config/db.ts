@@ -16,7 +16,7 @@ const connectDB = (url = options.dbUrl(), opts = dbOptions ) => {
 
 
   mongoose.connection.on('connected', () => {
-    consola.success(options.database);
+    consola.success('Data Base: ',options.database);
     clearTimeout(autoReconnectDB);
   })
 

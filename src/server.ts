@@ -7,10 +7,12 @@ import { json, urlencoded } from 'body-parser'
 import cluster from 'cluster'
 import os from 'os'
 
+// import files
 import connectDB from './config/db'
 import { payload } from './config/cluster'
 import logger from './middleware/logger'
 import errorHandler from './middleware/error'
+import { protect, signup, signin } from './services/auth/user'
 import routing from './routing'
 
 dotenv.config()
@@ -34,7 +36,9 @@ app.use(logger)
 
 /** Routes */
 
-app.use('/',  routing)
+app.post('/signup', signup)
+app.post('/signin', signin)
+app.use('/api', protect ,  routing)
 app.use('*', (req, res, next) => {
   res.json({
     message:'Ruta no disponible',
