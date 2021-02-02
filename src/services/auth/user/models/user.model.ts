@@ -1,4 +1,7 @@
 import { Schema, model, Model, Document } from 'mongoose'
+import TUser from '../types/user.type'
+import helloworld from './userSchema/hello_world.methods'
+import lala from './userSchema/lala.methods'
 import bcrypt from 'bcrypt'
 
 const userSchema = new Schema<TUserDoc , TUserModel>(
@@ -50,36 +53,25 @@ userSchema.methods.checkPassword = function(user, password:string) {
       })
   })
 }
-userSchema.statics.static1 = function () { return '' };
-userSchema.statics.lala = function () {
-  return 'lala'
-}
-userSchema.methods.helloworld = function() {
-  return 'hello world'
+
+
+userSchema.methods =  {
+  helloworld : (param) => helloworld(param),
+  lala : () => lala()
 }
 
-userSchema.methods.helloworld2 = function() {
-  return 'hello world'
-}
 
-type TUser = {
-  email: string
-}
 
-type TUserBase = TUser & Document & {
-  name : string
-}
+type TUserBase = TUser & Document 
 
 type TUserDoc =  TUserBase & {
-  helloworld() : string
-  helloworld2() : string
-  helloworld3() : string
+  lala() : string
+  helloworld(param) : string
+  checkPassword(user, password): boolean
 }
 
 type TUserModel = Model<TUserDoc> & {
   lala:() => string,
-  static1: () => string
-  static2: () => string
 }
 
 

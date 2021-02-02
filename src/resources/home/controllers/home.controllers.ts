@@ -5,8 +5,8 @@ let msgErrorController = 'Error in home controller'
 const home = catchAsync(msgErrorController, async (req, res, next) => {
 
   const user = await User.findById('601973ce6e96053225656811')
-  const email = user.helloworld2()
-  const test = User.static2()
+  const email = user.helloworld('adasadasdasdsadd')
+  const test = user.lala()
 
   res.status(200).json({ 
     message: "Home router",
