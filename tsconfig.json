@@ -7,6 +7,10 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "sourceMap": true,
+    "noEmitOnError":true,
+    "diagnostics":true,
+    "incremental":true,
+    "noEmit":true,
     "removeComments": true
   },
   "include": ["src/**/*"],
