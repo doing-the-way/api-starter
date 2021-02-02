@@ -38,7 +38,7 @@ app.use(logger)
 
 app.post('/signup', signup)
 app.post('/signin', signin)
-app.use('/api', protect ,  routing)
+app.use('/api', routing)
 app.use('*', (req, res, next) => {
   res.json({
     message:'Ruta no disponible',

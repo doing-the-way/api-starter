@@ -18,7 +18,8 @@ export const signin = async (req, res) => {
         }
         console.log(user)
 
-        const match = await user.schema.methods.checkPassword(user, req.body.password)
+        // const match = await user.schema.methods.checkPassword(user, req.body.password)
+        const match = await user.checkPassword(user, req.body.password)
 
         if (!match) {
             return res.status(401).send(invalid)

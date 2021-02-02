@@ -1,5 +1,18 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model, Model, Document } from 'mongoose'
 import bcrypt from 'bcrypt'
+
+type TUser =  {
+  email:string,
+  password:string,
+  rol:string,
+  helloworld():string
+}
+
+type TUserDoc = TUser & Document
+
+type TUserModel = TUserDoc & Model<TUserDoc> & {
+  helloworld():string
+}
 
 const userSchema = new Schema(
   {
@@ -52,4 +65,14 @@ userSchema.methods.checkPassword = function(user, password:string) {
   })
 }
 
-export const User = model('user', userSchema)
+userSchema.methods.helloworld = function() {
+  return 'hello world'
+  }
+
+  userSchema.statics.helloworld = function() {
+    return 'hello world'
+    }
+
+
+
+export const User = model< TUserModel >('user', userSchema)
