@@ -1,7 +1,7 @@
 import { Schema, model, Model, Document } from 'mongoose'
 import bcrypt from 'bcrypt'
 
-const userSchema:Schema = new Schema(
+const userSchema = new Schema<TUserDoc , TUserModel>(
   {
     email: {
       type: String,
@@ -62,9 +62,13 @@ userSchema.methods.helloworld2 = function() {
   return 'hello world'
 }
 
+interface TUser {
+  email: string
+}
 
-interface TUserDoc extends Document {
-  email:string
+interface TUserBase extends TUser, Document {}
+
+interface TUserDoc extends  TUserBase {
   helloworld() : string
   helloworld2() : string
 }
@@ -75,4 +79,4 @@ interface TUserModel extends Model<TUserDoc> {
 }
 
 
-export const User: TUserModel = model<TUserDoc, TUserModel>('user', userSchema)
+export const User = model<TUserDoc , TUserModel>('user', userSchema)
