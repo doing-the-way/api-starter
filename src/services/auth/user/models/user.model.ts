@@ -62,18 +62,20 @@ userSchema.methods.helloworld2 = function() {
   return 'hello world'
 }
 
-interface TUser {
+type TUser = {
   email: string
 }
 
-interface TUserBase extends TUser, Document {}
+type TUserBase = TUser & Document & {
+  name : string
+}
 
-interface TUserDoc extends  TUserBase {
+type TUserDoc =  TUserBase & {
   helloworld() : string
   helloworld2() : string
 }
 
-interface TUserModel extends Model<TUserDoc> {
+type TUserModel = Model<TUserDoc> & {
   lala:() => string,
   static1: () => string
 }
