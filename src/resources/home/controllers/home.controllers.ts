@@ -3,13 +3,18 @@ import { User } from '../../../services/auth/user/models/user.model'
 let msgErrorController = 'Error in home controller'
 
 const home = catchAsync(msgErrorController, async (req, res, next) => {
-  const user = await User.findOne({})
-  const hello = await user.helloworld()
+
+  const user = await User.findById('601973ce6e96053225656811')
+  
+  const email = user.lala
+  const test = User.lala()
+
   res.status(200).json({ 
     message: "Home router",
     payload: req.payload,
-    hello:`hello ${hello}`
-   })
+    hello:`hello ${email}`,
+    test:`ada ${test}`
+  })
 })
 
 export { home }

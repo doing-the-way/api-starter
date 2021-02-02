@@ -1,20 +1,7 @@
 import { Schema, model, Model, Document } from 'mongoose'
 import bcrypt from 'bcrypt'
 
-type TUser =  {
-  email:string,
-  password:string,
-  rol:string,
-  helloworld():string
-}
-
-type TUserDoc = TUser & Document
-
-type TUserModel = TUserDoc & Model<TUserDoc> & {
-  helloworld():string
-}
-
-const userSchema = new Schema(
+const userSchema:Schema = new Schema(
   {
     email: {
       type: String,
@@ -50,8 +37,7 @@ userSchema.pre("save", function(this: any, next: any){
         next()
     })
 })
-  
-  
+// userSchema.statics
 userSchema.methods.checkPassword = function(user, password:string) {
   const passwordHash = user.password
   return new Promise((resolve, reject) => {
@@ -64,15 +50,29 @@ userSchema.methods.checkPassword = function(user, password:string) {
       })
   })
 }
-
+userSchema.statics.static1 = function () { return '' };
+userSchema.statics.lala = function () {
+  return 'lala'
+}
 userSchema.methods.helloworld = function() {
   return 'hello world'
-  }
+}
 
-  userSchema.statics.helloworld = function() {
-    return 'hello world'
-    }
+userSchema.methods.helloworld2 = function() {
+  return 'hello world'
+}
 
 
+interface TUserDoc extends Document {
+  email:string
+  helloworld() : string
+  helloworld2() : string
+}
 
-export const User = model< TUserModel >('user', userSchema)
+interface TUserModel extends Model<TUserDoc> {
+  lala:() => string,
+  static1: () => string
+}
+
+
+export const User: TUserModel = model<TUserDoc, TUserModel>('user', userSchema)
