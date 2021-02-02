@@ -1,28 +1,36 @@
 import color from 'chalk'
+import morgan from 'morgan'
+import moment from 'moment-timezone'
 
-const logger = (req, res, next) => {
-  const colorMethod = (method) => {
-    let http;
-    switch(method){
-      case 'GET':
-        http = color.green(method)
-        break;
-      case 'POST':
-        http = color.yellow(method)
-        break;
-      case 'PUT':
-        http = color.cyan(method)
-        break;
-      case 'DELETE':
-        http = color.red(method)
-        break;
-    }
-    return http;
-  }
-  if(process.env.NODE_ENV !== 'testing'){
-    console.log(`${colorMethod(req.method)} ${res.statusCode} ${req.protocol}://${req.get('host')}${req.originalUrl}`)
-  }
-  next()
+morgan.token('fname',(req:any) => {
+  return req.fname
+})
+
+morgan.token('service',(req:any) => {
+  return req.service
+})
+
+morgan.token('error',(req, res) => {
+  return res.statusMessage
+
+})
+
+morgan.token('date', (req, res, tz:any) => {
+  return moment().tz(tz).format('DD/MM/YYYY - HH:mm:ss');
+})
+
+const logger = () => {
+  return `
+  ${color.bold.hex('#229fff')('SERVICE')} : ${color.bold(':service')}
+  ${color.bold.hex('#229fff')('DATE')}    : ${color.hex('#229fff')(':date[America/Lima]')}
+  ${color.bold.hex('#229fff')('METHOD')}  : ${color.bold(':method')}
+  ${color.bold.hex('#229fff')('URL')}     : ${color.hex('#229fff')(':url')} 
+  ${color.bold.hex('#229fff')('FNAME')}   : ${color.bold(':fname')}
+  ${color.bold.hex('#229fff')('STATUS')}  : ${color.hex('#229fff')(':status' )}
+  ${color.bold.hex('#229fff')('IP')}      : ${color.bold(':remote-addr')}
+  ${color.bold.hex('#229fff')('TIME')}    : ${color.hex('#229fff')(':response-time')} ms
+  ${color.bold.hex('#229fff')('MESSAGE')} : ${color.bold(':error')}
+  ${color.bold.gray('==================================')}`
 }
 
 export default logger

@@ -1,25 +1,33 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import color from 'chalk'
+import path from 'path'
+import morgan from 'morgan'
 import http from 'http'
 import consola from 'signale'
 import cors from 'cors'
 import { json, urlencoded } from 'body-parser'
 import cluster from 'cluster'
 import os from 'os'
+import ascii_text_generator from 'ascii-text-generator'
 
 // import files
 import connectDB from './config/db'
 import { payload } from './config/cluster'
 import logger from './middleware/logger'
 import errorHandler from './middleware/error'
-import { protect, signup, signin } from './services/auth/user'
 import routing from './routing'
 
+// enviroments
+const { NODE_ENV } = process.env
 dotenv.config()
 
+// title 
+const title = "Service";
+const ascii_title = color.green(ascii_text_generator(title,"2"));
 const app = express()
 const httpServer = http.createServer(app)
-const PORT = process.env.PORT 
+const PORT = process.env.PORT
 let numberCPUs;
 numberCPUs = 1
 
@@ -31,46 +39,48 @@ app.disable('x-powered-by')
 app.use(cors())
 app.use(json())
 app.use(urlencoded({ extended: true }))
+
 app.use(payload)
-app.use(logger)
+app.use(morgan(logger()))
+app.use('/', express.static(path.join(__dirname, '../temp'), {maxAge:2*24*60*60}))
+
+
+const PROTECT = NODE_ENV === 'pruduction' ? true : false
 
 /** Routes */
+// app.post('/signup', signup)
+// app.post('/signin', signin)
+app.use('/api',routing)
 
-app.post('/signup', signup)
-app.post('/signin', signin)
-app.use('/api', routing)
 app.use('*', (req, res, next) => {
-  res.json({
-    message:'Ruta no disponible',
-    path:req.originalUrl
-  })
+  res.send('servicio disponible **')
+  // res.json({
+  //   message:'Servicio disponible',
+  //   path:req.originalUrl,
+  //   art:ascii_text
+  // })
 })
-
 
 /** Error */
 app.use(errorHandler)
 
 let server:any;
-
 const start = async () => {
   try {
-    console.log('Cluster Master is: ', !!cluster.isMaster)
     if(cluster.isMaster){
-      console.log('this is the master process ', process.pid)
       for(let i = 0; i < numberCPUs; i++){
-        cluster.fork(); // clonando cluster
+        cluster.fork();
       }
       cluster.on('exit', worker => {
-        console.log(`worker process ${process.pid} had died.`)
-        console.log(`only ${Object.keys(cluster.workers).length} remainging`)
-        console.log('starting new worker')
         cluster.fork()
       })
     }else{
-      console.log('this the workers process ', process.pid)
       await connectDB();
       await httpServer.listen(PORT, () => {
-        consola.success(`API on http://localhost:${PORT} process pip: ${process.pid}`)
+        
+        console.log(ascii_title, '\n')
+        consola.success(`API-Gateway on ${color.yellow(`http://localhost:${PORT}`)} process pip: ${process.pid}`)
+        consola.success('Press CTRL-C to stop\n');
       })
     }
   } catch (e) {

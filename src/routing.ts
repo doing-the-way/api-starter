@@ -1,15 +1,10 @@
-import express from 'express';
-import admin from './resources/admin/admin.router'
-import home from './resources/home/home.router'
+import { Router } from 'express';
+import fname from './middleware/fname'
+import fn from './functions'
 
-const router = express()
+const router = Router()
 
-// router.on('mount', parent => {
-//   console.log(' ---- Mount ----- ', router.mountpath);
-// })
-
-router.use('/admin', admin)
-router.use('/home', home)
+router.post('/', fname, fn)
 
 export default router
 
