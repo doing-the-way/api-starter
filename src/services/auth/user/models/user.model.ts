@@ -71,11 +71,13 @@ interface TUserBase extends TUser, Document {}
 interface TUserDoc extends  TUserBase {
   helloworld() : string
   helloworld2() : string
+  helloworld3() : string
 }
 
 interface TUserModel extends Model<TUserDoc> {
   lala:() => string,
   static1: () => string
+  static2: () => string
 }
 
 

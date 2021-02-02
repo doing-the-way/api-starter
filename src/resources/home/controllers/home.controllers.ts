@@ -6,7 +6,7 @@ const home = catchAsync(msgErrorController, async (req, res, next) => {
 
   const user = await User.findById('601973ce6e96053225656811')
   const email = user.helloworld2()
-  const test = User.lala()
+  const test = User.static2()
 
   res.status(200).json({ 
     message: "Home router",
