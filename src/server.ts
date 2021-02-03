@@ -23,7 +23,8 @@ const { NODE_ENV } = process.env
 dotenv.config()
 
 // title 
-const title = "Service";
+const title = "Api";
+
 const ascii_title = color.green(ascii_text_generator(title,"2"));
 const app = express()
 const httpServer = http.createServer(app)
@@ -48,8 +49,6 @@ app.use('/', express.static(path.join(__dirname, '../temp'), {maxAge:2*24*60*60}
 const PROTECT = NODE_ENV === 'production' ? true : false
 
 /** Routes */
-// app.post('/signup', signup)
-// app.post('/signin', signin)
 app.get("/", (req, res, next) => {
   res.status(200).send('servicio activo')
 })
@@ -61,11 +60,6 @@ app.use('/api',routing)
 
 app.use('*', (req, res, next) => {
   res.status(404).send('Not Found')
-  // res.json({
-  //   message:'Servicio disponible',
-  //   path:req.originalUrl,
-  //   art:ascii_text
-  // })
 })
 
 /** Error */

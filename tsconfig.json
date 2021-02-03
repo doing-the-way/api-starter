@@ -5,13 +5,13 @@
     "rootDir": "./src",
     "outDir":"./dist",
     "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    // "noImplicitAny": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "sourceMap": true,
     "noEmitOnError":true,
     "diagnostics":true,
-    "incremental":true,
-    "noEmit":true,
     "removeComments": true,
     "paths": {
       "@src/*": ["src/*"]
