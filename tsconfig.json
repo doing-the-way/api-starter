@@ -4,6 +4,7 @@
     "module": "commonjs",
     "rootDir": "./src",
     "outDir":"./dist",
+    "baseUrl": ".",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "sourceMap": true,
@@ -11,7 +12,10 @@
     "diagnostics":true,
     "incremental":true,
     "noEmit":true,
-    "removeComments": true
+    "removeComments": true,
+    "paths": {
+      "@src/*": ["src/*"]
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]

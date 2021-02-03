@@ -1,7 +1,9 @@
-import catchAsync from '../../../utils/catchAsync'
+import catchAsync from '@src/utils/catchAsync'
+
 const admin = catchAsync('error', async (req, res, next) => {
   res.status(200).json({
-    message:"hola"
+    message:"hola",
+    data:'data'
   })
 })
 

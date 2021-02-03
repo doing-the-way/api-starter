@@ -8,7 +8,9 @@ const dbOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }
-const connectDB = (url = options.dbUrl(), opts = dbOptions ) => {
+
+let db ;
+const connectDB = (url = options.dbUrl, opts = dbOptions ) => {
 
   mongoose.set('useFindAndModify', false);
   mongoose.set('useCreateIndex', true);
@@ -33,7 +35,7 @@ const connectDB = (url = options.dbUrl(), opts = dbOptions ) => {
   let count  = 0;
   const  autoReconnectDB = setInterval(async () => {
     try{
-      await mongoose.connect(url, opts);
+      db = await mongoose.connect(url, opts);
     }catch (e){
       consola.error(count );
       count++;
@@ -43,4 +45,7 @@ const connectDB = (url = options.dbUrl(), opts = dbOptions ) => {
     return  autoReconnectDB;
   }
 
+export const disconnectDB = () => {
+  db.disconnect()
+}
 export default connectDB ;

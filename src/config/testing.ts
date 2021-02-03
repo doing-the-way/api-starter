@@ -3,5 +3,5 @@ export const config = {
     jwt: 'learneverything'
   },
   database:'api-starter-test',
-  dbUrl: () => process.env.MONGO_URI_TEST
+  dbUrl: process.env.MONGO_URI_TEST
 }

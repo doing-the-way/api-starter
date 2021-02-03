@@ -172,17 +172,22 @@
         "affectsGlobalScope": false
       },
       "./src/resources/controllers/admin/admin.controller.ts": {
-        "version": "a54549e00402f1e4c4f8634a7799679ff1397d80a16869bcf086ab5a13a85c38",
+        "version": "9bfe7e4bd4e48705a9a413385fce24647e855f6f5c896743bba2fae5dea9f90d",
         "signature": "1edd96019a1ce4e345e9d1f9109f09c80c425d0b820a580d00c56dca9fb1083b",
         "affectsGlobalScope": false
       },
+      "./src/resources/controllers/home/home.controller.ts": {
+        "version": "7b25d6e39cef1db9f4ce737b4f9c970bea0b2fe7a014a7fadb2ee33e2482ce3f",
+        "signature": "1e348088a6f628f451265dd19b635f913dfac4ed7e80029aa066ef12d19fd009",
+        "affectsGlobalScope": false
+      },
       "./src/resources/controllers/index.controller.ts": {
-        "version": "e357fa34f1cdb186beb56c265f55ff3c6a373ae0e4e1ed85c981dff8f12d7aa0",
-        "signature": "891d4074381637a6949ed500681def1ea1f2ac0ee337d07707eaba35a9356769",
+        "version": "d6dc825793fd09dc8cd1117d1923d7541c874d7751831acf74ba3be261294a16",
+        "signature": "0bfe4df26583f59513f50a67534c186fea4079641b006ac83987accde9627b66",
         "affectsGlobalScope": false
       },
       "./src/functions.ts": {
-        "version": "501a97edca8ca39d444f7cfdf2cac6a8f7906eba85503a0c499e9f3d08fb4834",
+        "version": "c0def23cbaff11d33973fd718e1b5af9c4b441022ea5878ffb9ccb6b12a86cbd",
         "signature": "2c30cce3de416b4680c6e433c46c61ea67d8dc54dcc294de6180d3f985e48cde",
         "affectsGlobalScope": false
       },
@@ -502,18 +507,18 @@
         "affectsGlobalScope": false
       },
       "./src/config/dev.ts": {
-        "version": "d694c6f1a95a5fa0e70763ffad95a56fd9a770297c37cb4294bdd33358862fc2",
-        "signature": "23d520db8ec3a220e5cde6c8b5821f649b46bba6d69c8ac5de160571371c1b6c",
+        "version": "a30a063e1b3aab5de975c1bf85a1cc12395d4c10687cfd2698e412794c3410c5",
+        "signature": "8f49bab2aefec22bfc37b410478b3fecb82cf5b31f7cddbf285e92e762e84883",
         "affectsGlobalScope": false
       },
       "./src/config/testing.ts": {
-        "version": "6e95342caba76d2ffc1000ef9fe695e65004c3ad748b900b7e6984d3f2c6143a",
-        "signature": "23d520db8ec3a220e5cde6c8b5821f649b46bba6d69c8ac5de160571371c1b6c",
+        "version": "2fdc312e98dd1d72d269499e95207151cebd229b749e2fdff1618a7d05b2b338",
+        "signature": "8f49bab2aefec22bfc37b410478b3fecb82cf5b31f7cddbf285e92e762e84883",
         "affectsGlobalScope": false
       },
       "./src/config/prod.ts": {
-        "version": "0ac93224c27a6839b6f63ee55a0bc98a7a9b17fdbc6c26934fd86ffe409d7cd4",
-        "signature": "23d520db8ec3a220e5cde6c8b5821f649b46bba6d69c8ac5de160571371c1b6c",
+        "version": "d4b9c7358f984d422b1cb85e40619adafe65125e716b0978f492ff383bdd6860",
+        "signature": "8f49bab2aefec22bfc37b410478b3fecb82cf5b31f7cddbf285e92e762e84883",
         "affectsGlobalScope": false
       },
       "./src/config/index.ts": {
@@ -522,8 +527,8 @@
         "affectsGlobalScope": false
       },
       "./src/config/db.ts": {
-        "version": "3eb6346052d4b73b9ab0b44f02d263858fc2ecdca6b54929d659f7624f80f154",
-        "signature": "c267ad371c7674e50d54aacc6436be24929be39c64673e3041b70630007a2759",
+        "version": "cd7a9ea946e61d885d2abbf1573ea659db33f12dbecdc66fc161b1fd57ccc7ee",
+        "signature": "b501539261e7d7e4457147838b7a34e816af20c4f37d65d5ac114b95fa133fff",
         "affectsGlobalScope": false
       },
       "./src/config/cluster.ts": {
@@ -562,13 +567,13 @@
         "affectsGlobalScope": false
       },
       "./src/server.ts": {
-        "version": "5b4aab89ab08535ccc2659130b4fcf0884a9471cf615fd2c267631e51d467884",
+        "version": "7672849284cea59c8bfa919a4d14a03bbf34a942ad924351bc2087788307431a",
         "signature": "facd2ff20ea30e09cc312afda76c08f0983d95e3a1233794612f9f36eeda6794",
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
-        "version": "c4964813699f9c4c4912bd82328013365750fb29c533de9a05b2fd2934b1fb60",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+        "version": "fd5776ac1a4d5002dc83913bda7f97f8714acc1092ad562d51379384a531dc43",
+        "signature": "22de59b57ade3bbe8ee25ab382017714e6e25a2091a3d79b56ccbd8230a6d6c1",
         "affectsGlobalScope": false
       },
       "./src/models/types/user.type.ts": {
@@ -599,11 +604,6 @@
       "./src/models/models/index.ts": {
         "version": "e132ec4b3c82d89874a4f773298eaec675c9f7777b10754528857d5b2e629e97",
         "signature": "37fc6c468560e22529f1a19a883600664d095ac5fbc60aad0bbe8ca48cfa2400",
-        "affectsGlobalScope": false
-      },
-      "./src/resources/controllers/home/admin.controller.ts": {
-        "version": "21ba74a9d6a3021ad7f1fca5823e5bda8bbfc0fe54746dc980563579f478e5ee",
-        "signature": "1e348088a6f628f451265dd19b635f913dfac4ed7e80029aa066ef12d19fd009",
         "affectsGlobalScope": false
       },
       "./node_modules/@babel/types/lib/index.d.ts": {
@@ -757,6 +757,7 @@
       "module": 1,
       "rootDir": "./src",
       "outDir": "./dist",
+      "baseUrl": "./",
       "moduleResolution": 2,
       "esModuleInterop": true,
       "sourceMap": true,
@@ -765,6 +766,12 @@
       "incremental": true,
       "noEmit": true,
       "removeComments": true,
+      "paths": {
+        "@src/*": [
+          "src/*"
+        ]
+      },
+      "pathsBasePath": "/home/fl/fl/github-repos/api-starter",
       "project": "./tsconfig.json",
       "configFilePath": "./tsconfig.json"
     },
@@ -1106,11 +1113,12 @@
       "./src/resources/controllers/admin/admin.controller.ts": [
         "./src/utils/catchAsync.ts"
       ],
-      "./src/resources/controllers/home/admin.controller.ts": [
+      "./src/resources/controllers/home/home.controller.ts": [
         "./src/utils/catchAsync.ts"
       ],
       "./src/resources/controllers/index.controller.ts": [
-        "./src/resources/controllers/admin/admin.controller.ts"
+        "./src/resources/controllers/admin/admin.controller.ts",
+        "./src/resources/controllers/home/home.controller.ts"
       ],
       "./src/routing.ts": [
         "./node_modules/@types/express/index.d.ts",
@@ -1444,7 +1452,8 @@
         "./src/models/types/user.type.ts"
       ],
       "./src/resources/controllers/index.controller.ts": [
-        "./src/resources/controllers/admin/admin.controller.ts"
+        "./src/resources/controllers/admin/admin.controller.ts",
+        "./src/resources/controllers/home/home.controller.ts"
       ],
       "./src/routing.ts": [
         "./node_modules/@types/express-serve-static-core/index.d.ts"
@@ -1598,7 +1607,7 @@
       "./src/models/models/userSchema/lala.methods.ts",
       "./src/models/types/user.type.ts",
       "./src/resources/controllers/admin/admin.controller.ts",
-      "./src/resources/controllers/home/admin.controller.ts",
+      "./src/resources/controllers/home/home.controller.ts",
       "./src/resources/controllers/index.controller.ts",
       "./src/routing.ts",
       "./src/server.ts",
@@ -2076,6 +2085,10 @@
       ],
       [
         "./src/resources/controllers/home/admin.controller.ts",
+        1
+      ],
+      [
+        "./src/resources/controllers/home/home.controller.ts",
         1
       ],
       [

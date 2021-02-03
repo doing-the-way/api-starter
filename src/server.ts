@@ -45,15 +45,22 @@ app.use(morgan(logger()))
 app.use('/', express.static(path.join(__dirname, '../temp'), {maxAge:2*24*60*60}))
 
 
-const PROTECT = NODE_ENV === 'pruduction' ? true : false
+const PROTECT = NODE_ENV === 'production' ? true : false
 
 /** Routes */
 // app.post('/signup', signup)
 // app.post('/signin', signin)
+app.get("/", (req, res, next) => {
+  res.status(200).send('servicio activo')
+})
+
+app.get('/api',(req, res, next) => {
+  res.status(401).send('Unauthorized')
+})
 app.use('/api',routing)
 
 app.use('*', (req, res, next) => {
-  res.send('servicio disponible **')
+  res.status(404).send('Not Found')
   // res.json({
   //   message:'Servicio disponible',
   //   path:req.originalUrl,

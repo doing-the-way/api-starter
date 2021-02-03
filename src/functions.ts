@@ -4,7 +4,7 @@ const fn = async (req, res, next) => {
   let fname = controller[req.fname] ;
 
   if(!fname) {
-    return res.status(500).json({message:'fname no existe!!'})
+    return res.status(404).json({message:'fname no existe!!'})
   }
 
   return fname(req, res, next)

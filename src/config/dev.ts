@@ -3,5 +3,5 @@ export const config = {
     jwt: 'mysecretkey'
   },
   database:'api-starter',
-  dbUrl: () => process.env.MONGO_URI_DEV
+  dbUrl: process.env.MONGO_URI_DEV
 }
