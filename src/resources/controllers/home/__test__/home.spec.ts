@@ -2,8 +2,8 @@ import request from 'supertest'
 import connectDB, { disconnectDB } from '../../../../config/db'
 import { app } from '../../../../server'
 
-describe('admin', () => {
-  test('get admin', async (done) => {
+describe('home', () => {
+  test('get home', async (done) => {
     beforeAll( async () => {
       connectDB();
     });
@@ -12,7 +12,7 @@ describe('admin', () => {
         const res = await request(app)
         .post('/api')
         .send({
-          fname: 'admin',
+          fname: 'home',
         })
         
       
